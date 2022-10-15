@@ -1,16 +1,32 @@
 import { NextFunction, Response, Request } from 'express';
 
-export async function getAllUsers(request: Request, response: Response, next: NextFunction) {
+import * as userService from '../../services/userServices/users.services';
+
+export async function createUser(request: Request, response: Response, next: NextFunction) {
   try {
-    return response.status(users.status).json(users.content);
+    const result = await userService.createUser();
+
+    return response.status(result.status).json(result.content);
   } catch (error: any) {
     return next(error);
   }
 }
 
-export async function createUser(request: Request, response: Response, next: NextFunction) {
+export async function getAllUsers(request: Request, response: Response, next: NextFunction) {
   try {
-    return response.status(users.status).json(users.content);
+    const result = await userService.getAllUsers();
+
+    return response.status(result.status).json(result.content);
+  } catch (error: any) {
+    return next(error);
+  }
+}
+
+export async function getUser(request: Request, response: Response, next: NextFunction) {
+  try {
+    const result = await userService.getUser();
+
+    return response.status(result.status).json(result.content);
   } catch (error: any) {
     return next(error);
   }
@@ -18,7 +34,9 @@ export async function createUser(request: Request, response: Response, next: Nex
 
 export async function userLogin(request: Request, response: Response, next: NextFunction) {
   try {
-    return response.status(users.status).json(users.content);
+    const result = await userService.userLogin();
+
+    return response.status(result.status).json(result.content);
   } catch (error: any) {
     return next(error);
   }
@@ -26,7 +44,8 @@ export async function userLogin(request: Request, response: Response, next: Next
 
 export async function deleteUser(request: Request, response: Response, next: NextFunction) {
   try {
-    return response.status(users.status).json(users.content);
+    const result = await userService.deleteUser();
+    return response.status(result.status).json(result.content);
   } catch (error: any) {
     return next(error);
   }
