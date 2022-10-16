@@ -22,9 +22,9 @@ export async function getAllUsers(request: Request, response: Response, next: Ne
   }
 }
 
-export async function getUser(request: Request, response: Response, next: NextFunction) {
+export async function getUserById(request: Request, response: Response, next: NextFunction) {
   try {
-    const result = await userService.getUser();
+    const result = await userService.getUserById();
 
     return response.status(result.status).json(result.content);
   } catch (error: any) {
