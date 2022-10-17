@@ -1,32 +1,34 @@
 import { ObjectId } from 'mongodb';
 import connection from '../../database/conection';
+import { User } from '../../interfaces/user.interface';
 
-export async function createUser(test: string) {
+export async function createUser(data: User) {
   const conn = await connection('users');
-  const addedUser = conn.insertOne({ test });
-  return addedUser;
+  const { insertedId } = await conn.insertOne({ ...data });
+  return insertedId;
 }
 
 export async function getAllUsers() {
   const conn = await connection('users');
-  const foudedUsers = conn.find({}).toArray();
-  return foudedUsers;
+  const foundUsers = await conn.find({}).toArray();
+  return foundUsers;
 }
 
 export async function getUserById(userId: ObjectId) {
   const conn = await connection('users');
-  const foudedUsers = conn.findOne({ id: userId });
-  return foudedUsers;
+
+  const foundUser = await conn.findOne({ _id: userId });
+  return foundUser;
 }
 
 export async function getUserByEmail(userEmail: string) {
   const conn = await connection('users');
-  const foudedUsers = conn.findOne({ email: userEmail });
-  return foudedUsers;
+  const foundUser = await conn.findOne({ email: userEmail });
+  return foundUser;
 }
 
-export async function deleteUser(userId: ObjectId) {
+export async function deleteUserById(userId: ObjectId) {
   const conn = await connection('users');
-  const foudedUsers = conn.deleteOne({ id: userId });
-  return foudedUsers;
+  const deletedUser = await conn.deleteOne({ _id: userId });
+  return deletedUser;
 }
