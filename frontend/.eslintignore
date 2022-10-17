@@ -1,0 +1,10 @@
+src/index.js
+src/app.js
+*.test.js
+serviceWorker.js
+reportWebVitals.js
+setupTests.js
+.gitattributes
+src/index.js
+build/*
+jest.config.js
