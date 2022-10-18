@@ -11,7 +11,7 @@ export const Main = styled.div`
 export const Container = styled.div`
   background-color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   height: 500px;

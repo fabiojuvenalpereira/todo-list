@@ -16,31 +16,27 @@ export const Form = styled.form`
     width: 100%;
   }
 
-  & .email-input-area {
-    /* background-color: red; */
-  }
-
-  & .password-input-area {
-    /* background-color: green; */
-  }
-
   & .register-button {
     align-self: center;
     background: none;
     border: none;
+    color: #00000095;
     margin-top: 1em;
+    font-weight: 500;
     width: 50px;
   }
 `;
 
 export const Label = styled.label`
-  
+  color: #00000095;
 `;
 
 export const Button = styled.button`
   background-color: blueviolet;
   border: none;
   border-radius: 8px;
+  color: white;
+  font-weight: 500;
   height: 50px;
   margin-top: 0.5em;
   width: 500px;
