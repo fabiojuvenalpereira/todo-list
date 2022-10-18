@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../../contexts/auth/AuthContext';
+import validateLogin from '../../utils/validations/loginSchemaValidator';
 
 import {
   Form,
@@ -12,21 +14,46 @@ function FormLoginComponent() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isValidFields, setIsValidFields] = useState(false);
 
-  const changeText = ({ target }) => {
-    if (target.id === 'email') setEmail(target.value);
-    else if (target.id === 'password') setPassword(target.value);
+  const auth = useContext(AuthContext);
+
+  const signIn = async (data) => {
+    const isLogged = auth.signIn(data);
+    if (isLogged) console.log(auth.user);
+  };
+
+  const handleEmail = ({ target }) => {
+    setEmail(target.value);
+  };
+
+  const handlePassword = ({ target }) => {
+    setPassword(target.value);
   };
 
   const loginButton = (event) => {
     event.preventDefault();
+
+    const data = {
+      email,
+      password,
+    };
+
+    const isNotValid = validateLogin(data);
+    if (isNotValid) { /* lançar popUp na tela */ } else {
+      signIn(data);
+    }
   };
 
   const registerButton = (event) => {
     event.preventDefault();
     navigate('/register');
-    console.log('registr');
   };
+
+  useEffect(() => {
+    if (email.length === 0 || password.length === 0) setIsValidFields(false);
+    else setIsValidFields(true);
+  }, [email, password, isValidFields]);
 
   return (
     <Form>
@@ -37,7 +64,7 @@ function FormLoginComponent() {
             <Input
               type="text"
               id="email"
-              onChange={changeText}
+              onChange={handleEmail}
               value={email}
             />
           </Label>
@@ -48,15 +75,18 @@ function FormLoginComponent() {
             <Input
               type="text"
               id="password"
-              onChange={changeText}
+              onChange={handlePassword}
               value={password}
             />
           </Label>
         </div>
+
         <Button
+          isEnable={isValidFields}
           type="button"
           className=""
           onClick={loginButton}
+          disabled={!isValidFields}
         >
           Entrar
         </Button>
