@@ -1,16 +1,8 @@
-import jwt from 'jsonwebtoken';
+import jwtDecode from 'jwt-decode';
 
 export const decodeToken = (token) => {
-  const decodedToken = jwt.decode(token);
-
-  const {
-    _id,
-    name,
-    email,
-    ...dataToken
-  } = decodedToken;
-
-  return dataToken;
+  const decodedToken = jwtDecode(token);
+  return decodedToken;
 };
 
-export const decodeTokenFullInfo = (token) => jwt.decode(token);
+export const decodeTokenFullInfo = (token) => jwtDecode(token);
