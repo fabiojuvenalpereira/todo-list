@@ -4,9 +4,11 @@ import AuthContext from './AuthContext';
 
 function RequireAuth({ children }) {
   const auth = useContext(AuthContext);
-  if (auth) {
+
+  if (!auth.user) {
     return <Login />;
   }
+
   return children;
 }
 
