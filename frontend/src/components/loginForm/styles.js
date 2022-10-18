@@ -21,6 +21,7 @@ export const Form = styled.form`
     background: none;
     border: none;
     color: #00000095;
+    cursor: pointer;
     margin-top: 1em;
     font-weight: 500;
     width: 50px;
@@ -28,17 +29,19 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.label`
-  color: #00000095;
+    color: #00000095;
 `;
 
 export const Button = styled.button`
-  background-color: blueviolet;
+  background-color: ${(props) => (props.isEnable ? '#8A2BE2' : '#8A2BE295')};
   border: none;
   border-radius: 8px;
-  color: white;
+  color: ${(props) => (props.isEnable ? 'white' : '#00000098')};
+  cursor: pointer;
   font-weight: 500;
   height: 50px;
   margin-top: 0.5em;
+  transition: 0.2s;
   width: 500px;
 `;
 

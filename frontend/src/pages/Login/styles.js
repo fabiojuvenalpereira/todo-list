@@ -12,6 +12,7 @@ export const Container = styled.div`
   background-color: white;
   border: none;
   border-radius: 8px;
+  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.51);
   display: flex;
   flex-direction: column;
   height: 500px;
