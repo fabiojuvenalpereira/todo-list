@@ -14,6 +14,7 @@ Este é um desafio técnico realizado com o intuito de ocupar a vaga de desenvol
 		  * [Como Foi Feito](#como-foi-feito)
  		  * [Próximos Passos](#próximos-passos)
   * [Softwares Utilizados](#softwares-e-ferramentas-utilizadas)
+  * [Como  Instalar](#como-instalar)
   * [Referências](#referências)
   * [Sobre Mim](#sobre-mim)
 <!--te-->
@@ -76,14 +77,20 @@ Depois de finalmente definida a forma de persistência de dados, parti para as r
 
 Segui uma estrutura de camadas chamada MSC (models,services,controllers) onde a camada de modelo é a camada responsável por lidar diretamente com o banco de dados, a camada de serviço lida com todas as regras de negócios e a camada de controle é responsável por lidar com a "comunicação" com o cliente que neste caso será o frontend que irá consumir.
 
+No frontend iniciei definindo uma estrutura básica e criando algumas páginas e componentes de maneira bruta, sem regras específicas, para poder trabalhar posteriormente com as regras de negócio de cada componente da aplicação de maneira mais definitiva, criei arquivos separados para lidar com as solicitações que serão realizadas para o backend, estes arquivos poderão ser encontrados na pasta API localizada no módulo de frontend.
+
+Comecei a desenvolver a tela de login e cadastro como um brainstorm, utilizando somente uma regra de negócio básica para fazer a aplicação funcionar de maneira local, para poder ir polindo e melhorando conforme a evolução da aplicação e das funcionalidades. Comecei a criar um design, para saber se atenderia a ideia que eu tinha inicialmente e para poder melhorar a aplicação pensando em usabilidade do usuário.
+
+
 
 ##
 #### PRÓXIMOS PASSOS
-Pretendo realizar o teste de toda a aplicação a fim de minimizar a possibilidade de erro e amplificar a manutenibilidade da aplicação
+Pretendo realizar os testes de toda a aplicação a fim de minimizar a possibilidade de erro e amplificar a manutenibilidade da aplicação, além disso, percebi também alguns pontos onde posso melhorar tanto a leitura como a qualidade de código, percebi que em alguns quesitos, principalmente do frontend, exitem outras possibilidades que tornariam o código muito mais limpo, pretendo fazer isso futuramente.
 
 ##
 ### CONCLUSÃO
-Ainda ex
+Achei um projeto bem interessante, pude explorar muito dos meus conhecimentos, além de poder estudar e aprender muito durante o desenvolvimento da aplicação, acredito que esse tipo de projeto, por mais simples que possa parecer, sempre será um desafio começar do zero, e pensar em toda arquitetura, e design da aplicação. Ainda não estou 100% satisfeito, faltaram algumas coisas, como por exemplo os testes, devido ao tempo, acabei optando por fazer a aplicação funcionar e realizar a implementação de testes juntamente com a atualização e melhoria de código.
+##
 
 ## SOFTWARES E FERRAMENTAS UTILIZADAS
 
@@ -93,6 +100,96 @@ Ainda ex
 
 - [Node.js]((https://nodejs.org/)) - Node.js é um software de código aberto, multiplataforma, baseado no interpretador V8 do Google e que permite a execução de códigos JavaScript fora de um navegador web. [14 ou superior].
 
+
+
+## COMO INSTALAR
+Para conseguir instalar e fazer com que o código execute em seu computador, você vai precisar seguir alguns requisitos.
+
+Primeiro você precisará de ter os softwares utilizados para criar instalados em sua máquina, mas não se preocupe você poderá encontrá-los na seção de softwares e ferramentas utilizadas, que é esta [aqui](#softwares-e-ferramentas-utilizadas). As versões dos softwares que utilizei, estão logo ao final da síntese, contidas entre colchetes assim como neste exemplo: **[1.64.2]**. 
+
+Tendo os softwares instalados em sua máquina você precisará realizar os seguintes passos:
+##
+
+#### Antes de tudo selecione uma pasta onde será clonado o projeto e então siga os seguintes passos.
+
+### Você precisará de clonar o repositório em sua máquina, para isso utilize o seguinte comando:
+
+	git clone git@github.com:fabiojuvenalpereira/todo-list.git
+
+### Depois você precisará entrar na pasta que será criada em seu computador, utilizando o seguinte comando:
+
+	cd todo-list
+
+##
+
+### Agora, precisaremos instalar as dependências necessárias nos módulos do projeto:
+
+### Primeiro, vamos instalar as dependências necessárias do módulo de front end:
+
+Para isso, já dentro da pasta to-do,  vamos entrar na pasta chamada frontend, utilizando o seguinte comando:
+
+	cd frontend
+	
+Logo depois, precisaremos realizar o comando para baixar e instalar as dependências para o projeto.
+
+	 npm install
+
+Espere a instalação de todas as dependências, e então prossiga para os próximos passos
+##
+
+### Depois de instaladas as dependências do módulo de front, vamos instalar as dependências do módulo de backend.
+
+Precisaremos de voltar para a pasta principal da aplicação, logo em seguida entrar na pasta do módulo de backend. Podemos utilizar este comando.
+
+	cd ../backend
+
+Em seguida, realizar o comando para baixar e instalar as dependências.
+	
+	npm install
+
+Aguarde até que todas as dependências sejam baixadas.
+
+##
+
+
+
+
+### Depois de instaladas todas as dependências e configuradas as variáveis de ambiente em ambos os módulos, iremos iniciar o projeto em localhost.
+
+precisaremos de usar dois terminais, um para startar o frontend e outro para o backend. 
+
+Caso esteja utilizando o vscode, é possível fazer isso por dentro do próprio software, basta clicar no menu superior `Terminal`, `Novo Terminal`.
+
+Certifique-se que você esteja na pasta raiz do projeto, ou seja, na pasta todo-list.
+Em um terminal execute o comando.
+
+	cd backend
+
+Logo em seguida, no terminal do backend execute o comando.
+  
+	npm run dev
+
+*Certifique se que o MongoDb esteja rodando localmente.
+
+
+Se tudo aconteceu conforme o esperado, no terminal deve aparecer uma mensagem dizendo que a aplicação foi iniciada na porta `application runs in 3001 port`.
+
+
+No segundo terminal, certifique-se que está na pasta raiz do projeto, ou seja, na pasta to-do e execute o comando para entrar no módulo de frontend.
+ 
+ 	cd frontend
+
+Logo em seguida, execute o comando para dar inicio a aplicação.
+
+	npm start
+
+  
+Se tudo estiver ocorrido conforme o esperado, no terminal deve aparecer uma mensagem dizendo que a aplicação foi iniciada na porta `localhost:3000` e você será redirecionado para seu navegador. Visualizando a tela principal da aplicação. Caso isso não aconteça, você poderá tentar digitar em seu navegador o seguinte link:
+
+	http://localhost:3000/
+  
+Com tudo rodando de forma correta será possível utilizar a aplicação.
+ 
 ## REFERÊNCIAS
 
 #### Os links abaixo contém alguns sites e fóruns, que serviram de referência para a elaboração do desafio.
@@ -108,148 +205,4 @@ Ainda ex
 [GitHub](https://github.com/fabiojuvenalpereira)
 fabiojuvenalpereira@gmail.com
 
-## COMO INSTALAR
 
-  
-
-Para conseguir instalar e fazer com que o código execute em seu computador, você vai precisar seguir alguns
-
-requisitos.
-
-  
-
-Primeiro você precisará de ter os softwares utilizados para criar instalados em sua máquina, mas não se preocupe você poderá encontrá-los na seção de softwares e ferramentas utilizadas, que é esta [aqui](#softwares-e-ferramentas-utilizadas). As versões dos softwares que utilizei, estão logo ao final da síntese, contidas entre colchetes assim como neste exemplo: **[1.64.2]**.
-
-  
-
-Tendo os softwares instalados em sua máquina você precisará realizar os seguintes passos:
-
-##
-
-### Você precisará de clonar o repositório em sua máquina, para isso utilize o seguinte comando:
-
-####
-
-git clone git@github.com:fabiojuvenalpereira/EbytrProject.git
-
-### Depois você precisará entrar na pasta que será criada em seu computador, utilizando o seguinte comando:
-
-####
-
-cd EbyrtProject
-
-##
-
-### Agora, precisaremos instalar as dependências necessárias nos módulos do projeto:
-
-  
-
-### Primeiro, vamos instalar as dependências necessárias do módulo de front end:
-
-Para isso vamos entrar na pasta chamada frontend, utilizando o seguinte comando:
-
-cd frontend
-
-  
-
-Logo depois, precisaremos realizar o comando para baixar e instalar as dependências para o projeto.
-
-  
-
-npm install
-
-##
-
-### Depois de instaladas as dependências do módulo de front, vamos instalar as dependências do módulo de backend.
-
-Para isso, precisaremos de voltar para a pasta principal da aplicação, logo em seguida entrar na pasta do módulo de backend.
-
-cd ../backend
-
-  
-
-Em seguida, realizar o comando para baixar e instalar as dependências.
-
-npm install
-
-##
-
-  
-
-### Depois de instaladas as dependências em ambos os módulos, para executarmos de fato o projeto em localhost,
-
-precisaremos de usar dois terminais, um para o front end e outro para o back end.
-
-  
-
-Caso esteja utilizando o vscode, é só clicar no menu superior `Terminal`, `Novo Terminal`.
-
-Certifique-se que você esteja na pasta raiz do projeto, ou seja, na pasta EbyrtProject.
-
-  
-
-Em um terminal execute o comando.
-
-  
-
-cd backend
-
-  
-
-Logo em seguida, execute o comando.
-
-  
-
-npm run dev
-
-*Certifique se que o MongoDb esteja rodando localmente
-
-Se tudo aconteceu conforme o esperado, no terminal deve aparecer uma mensagem dizendo que a aplicação foi iniciada na porta `localhost:3001`.
-
-Em um terminal execute o comando.
-
-  
-
-cd frontend
-
-Logo em seguida, execute o comando.
-
-npm start
-
-  
-
-Se tudo estiver ocorrido conforme o esperado, no terminal deve aparecer uma mensagem dizendo que a aplicação foi iniciada na porta `localhost:3000` e você será redirecionado para seu navegador. Visualizando a tela principal da aplicação. Caso isso não aconteça, você poderá tentar digitar em seu navegador o seguinte link:
-
-  
-
-http://localhost:3000/
-
-  
-
-## COMO FUNCIONA
-
-##### Desenho simbólico do armazenamento de dados realizado no banco de dados:
-
-| _id |userName |task | date |
-|-----|---------|-----------------------|-----------------------|
-| 1 | Xablau | Beber água | 14/02/2022 - 14:00:01 |
-| 2 | Xablau | Terminar a série | 14/02/2022 - 14:50:00 | 
- 
-
-##### Simbolização da rota realizada pela aplicação:
-
-```mermaid
-
-graph LR
-
-A[Aplicação] --> B(API- BackEnd)
-
-B --> C{Banco de dados}
-
-C --> B
-
-B --> A
-
-```
-
-##
