@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+// import { register } from '../../api/user';
 import {
   Form,
   Button,
@@ -13,22 +14,37 @@ function RegisterForm() {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState();
-  const [birhDate, setBirthDate] = useState(new Date());
-  const [address, setAddress] = useState();
+  const [password, setPassword] = useState('');
+  const [birthdate, setBirthdate] = useState('');
+  const [address, setAddress] = useState('');
 
-  const handleChange = (event) => {
-    console.log(event.target);
-    console.log(birhDate);
-    setName();
-    setBirthDate();
-    setEmail();
-    setPassword();
-    setAddress();
+  // const sendRegisterRequest = async () => {
+  // };
+
+  const handleName = ({ target }) => {
+    setName(target.value);
+  };
+
+  const handleEmail = ({ target }) => {
+    setEmail(target.value);
+  };
+
+  const handlePassword = ({ target }) => {
+    setPassword(target.value);
+  };
+
+  const handleBirthdate = ({ target }) => {
+    setBirthdate(target.value);
+  };
+
+  const handleAddress = ({ target }) => {
+    setAddress(target.value);
   };
 
   const registerButton = () => {
-
+    setTimeout(() => {
+      console.log(name, email, password, birthdate, address);
+    }, 1000);
   };
 
   return (
@@ -41,7 +57,7 @@ function RegisterForm() {
             <Input
               type="text"
               id="name"
-              onChange={handleChange}
+              onChange={handleName}
               value={name}
             />
           </Label>
@@ -53,7 +69,7 @@ function RegisterForm() {
             <Input
               type="text"
               id="email"
-              onChange={handleChange}
+              onChange={handleEmail}
               value={email}
             />
           </Label>
@@ -65,7 +81,7 @@ function RegisterForm() {
             <Input
               type="text"
               id="password"
-              onChange={handleChange}
+              onChange={handlePassword}
               value={password}
             />
           </Label>
@@ -77,8 +93,8 @@ function RegisterForm() {
             <Input
               type="text"
               id="birthdate"
-              onChange={handleChange}
-              value={birhDate}
+              onChange={handleBirthdate}
+              value={birthdate}
             />
           </Label>
         </div>
@@ -89,7 +105,7 @@ function RegisterForm() {
             <Input
               type="text"
               id="address"
-              onChange={handleChange}
+              onChange={handleAddress}
               value={address}
             />
           </Label>
