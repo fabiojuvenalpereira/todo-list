@@ -23,7 +23,7 @@ Este é um desafio técnico realizado para a Ativy com o intuito de ocupar a vag
 ### IMAGENS
 ![Login](https://i.imgur.com/QebXyjt.png)
 
-![Cadastro](https://i.imgur.com/NdbNjLx.png)
+![Cadastro](https://i.imgur.com/xmYZOGP.png)
 
 ![Lista](https://i.imgur.com/wyQnmf0.png)
 ### CASE
