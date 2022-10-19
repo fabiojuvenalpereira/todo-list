@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route index element={<RequireAuth><TaskList/></RequireAuth>}/>
+          <Route index element={<Login />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/tasks' element={<RequireAuth><TaskList/></RequireAuth>}/>
           <Route path='/register' element={<Register />}/>

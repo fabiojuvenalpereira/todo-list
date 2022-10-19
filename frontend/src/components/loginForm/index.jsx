@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../contexts/auth/AuthContext';
 import validateLogin from '../../utils/validations/loginSchemaValidator';
+import Loading from '../loading';
+import PopUp from '../popUp';
 
 import {
   Form,
@@ -12,15 +14,24 @@ import {
 
 function FormLoginComponent() {
   const navigate = useNavigate();
+  const auth = useContext(AuthContext);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isValidFields, setIsValidFields] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  const auth = useContext(AuthContext);
-
-  const signIn = async (data) => {
-    const isLogged = auth.signIn(data);
-    if (isLogged) console.log(auth.user);
+  const login = async (data) => {
+    try {
+      const isLogged = await auth.signIn(data);
+      if (isLogged) {
+        navigate('/tasks');
+        auth.refreshPage();
+      }
+    } catch (statusError) {
+      setError('Erro ao tentar realizar login.');
+    }
   };
 
   const handleEmail = ({ target }) => {
@@ -33,15 +44,19 @@ function FormLoginComponent() {
 
   const loginButton = (event) => {
     event.preventDefault();
-
     const data = {
       email,
       password,
     };
 
     const isNotValid = validateLogin(data);
-    if (isNotValid) { /* lançar popUp na tela */ } else {
-      signIn(data);
+    if (isNotValid) {
+      setError('E-mail ou Senha incorretos.');
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
+    } else {
+      login(data);
     }
   };
 
@@ -51,12 +66,18 @@ function FormLoginComponent() {
   };
 
   useEffect(() => {
+    if (loading) {
+      setLoading(false);
+    }
+
     if (email.length === 0 || password.length === 0) setIsValidFields(false);
     else setIsValidFields(true);
   }, [email, password, isValidFields]);
 
+  if (loading) return (<Loading />);
   return (
     <Form>
+      { error ? <PopUp props={error} type="error" /> : ''}
       <div className="input-area">
         <div className="email-input-area">
           <Label htmlFor="email">

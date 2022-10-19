@@ -1,10 +1,12 @@
 import React from 'react';
+import ListComponent from '../../components/list';
+import Main from './styles';
 
 function TaskList() {
   return (
-    <div className="main-tasklist-container">
-      <h1>Tasklist</h1>
-    </div>
+    <Main className="main-tasklist-container">
+      <ListComponent />
+    </Main>
   );
 }
 

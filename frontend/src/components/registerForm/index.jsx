@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { register } from '../../api/user';
+import { register } from '../../api/user';
+import registerSchemaValidator from '../../utils/validations/registerSchemaValidator';
+import PopUp from '../popUp';
 import {
   Form,
   Button,
@@ -17,9 +19,33 @@ function RegisterForm() {
   const [password, setPassword] = useState('');
   const [birthdate, setBirthdate] = useState('');
   const [address, setAddress] = useState('');
+  const [popUp, setPopUp] = useState(false);
+  const [error, setError] = useState(false);
 
-  // const sendRegisterRequest = async () => {
-  // };
+  const clearState = () => {
+    setName('');
+    setEmail('');
+    setPassword('');
+    setBirthdate('');
+    setAddress('');
+  };
+
+  const sendRegisterRequest = async (data) => {
+    try {
+      await register(data);
+      clearState();
+      setPopUp(true);
+      setTimeout(() => {
+        setPopUp(false);
+        navigate('/login');
+      }, 2000);
+    } catch (statusError) {
+      setError('Não foi possível cadastrar usuário.');
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
+    }
+  };
 
   const handleName = ({ target }) => {
     setName(target.value);
@@ -42,13 +68,29 @@ function RegisterForm() {
   };
 
   const registerButton = () => {
-    setTimeout(() => {
-      console.log(name, email, password, birthdate, address);
-    }, 1000);
+    const data = {
+      name,
+      email,
+      password,
+      birthdate,
+      address,
+    };
+
+    try {
+      registerSchemaValidator(data);
+      sendRegisterRequest(data);
+    } catch (statusError) {
+      setError(statusError.message);
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
+    }
   };
 
   return (
     <Main>
+      { error ? <PopUp props={error} type="error" /> : ''}
+      { popUp ? <PopUp props="Usuário Cadastrado" type="" /> : ''}
       <h2>Cadastro</h2>
       <Form>
         <div className="input-name input-area">

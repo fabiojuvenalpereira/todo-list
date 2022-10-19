@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from './AuthContext';
 import { login } from '../../api/user';
 import createKeyOnLocalStorage from '../../utils/LocalStorageSetAndGet/createKey';
@@ -7,48 +8,53 @@ import getDataFromLocalStorage from '../../utils/LocalStorageSetAndGet/getLocalS
 import { decodeToken } from '../../utils/token/decodeToken';
 
 function AuthProvider({ children }) {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState(false);
-  const [loginResult, setLoginResult] = useState({});
   const [userData, setUserData] = useState({});
+  const [updatePage, setUpdatePage] = useState(false);
 
   const signIn = async (credentials) => {
     try {
-      const { data } = await login(credentials);
-
-      if (data) {
+      const result = await login(credentials);
+      if (result.status) {
         createKeyOnLocalStorage('user');
-        setDataToLocalStorage(data, 'user');
-        setLoginResult(data);
-        return true;
+        setDataToLocalStorage(result.data, 'user');
       }
-      return false;
+      return true;
     } catch (error) {
-      setLoginResult(error);
+      console.log(error);
       return false;
     }
   };
 
+  const refreshPage = () => {
+    setUpdatePage(!updatePage);
+  };
+
   useEffect(() => {
     const validateToken = () => {
-      try {
-        const data = decodeToken(getDataFromLocalStorage('user'));
-
-        if (data.name) setUser(true);
-        setUserData(data);
-      } catch (error) {
-        setUser(false);
+      const token = getDataFromLocalStorage('user');
+      if (token) {
+        const decodedToken = decodeToken(token);
+        if (decodedToken.name) {
+          setUser(true);
+          setUserData(decodedToken);
+          navigate('/tasks');
+        }
       }
     };
+
     validateToken();
-  }, [user, loginResult]);
+  }, [user, updatePage]);
 
   const contextValue = useMemo(() => ({
     user,
     userData,
     setUser,
     signIn,
-    loginResult,
-  }), [user]);
+    refreshPage,
+  }), [user, userData]);
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

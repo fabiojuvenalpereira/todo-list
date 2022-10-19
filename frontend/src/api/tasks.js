@@ -19,8 +19,7 @@ export async function getTasks(userId, token) {
     },
   });
 
-  const data = await response.json();
-  return data;
+  return response;
 }
 
 export async function getTaskById(taskId, token) {
@@ -30,11 +29,10 @@ export async function getTaskById(taskId, token) {
     },
   });
 
-  const data = await response.json();
-  return data;
+  return response;
 }
 
-export async function editTask(taskId, token, data) {
+export async function updateTask(taskId, token, data) {
   const response = await axios.put(`${URL}/${taskId}`, data, {
     headers: {
       authorization: token,
@@ -44,8 +42,8 @@ export async function editTask(taskId, token, data) {
   return response;
 }
 
-export async function deleteTask(taskId, token, data) {
-  const response = await axios.delete(`${URL}/${taskId}`, data, {
+export async function deleteTask(taskId, token) {
+  const response = await axios.delete(`${URL}/${taskId}`, {
     headers: {
       authorization: token,
     },
