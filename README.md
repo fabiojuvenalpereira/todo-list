@@ -20,7 +20,12 @@ Este é um desafio técnico realizado com o intuito de ocupar a vaga de desenvol
 <!--te-->
 
 ## DETALHES DO PROJETO
+### IMAGENS
+![Login](https://i.imgur.com/QebXyjt.png)
 
+![Cadastro](https://i.imgur.com/NdbNjLx.png)
+
+![Lista](https://i.imgur.com/wyQnmf0.png)
 ### CASE
 Elaborar um projeto full stack, ou seja, uma aplicação que contenha backend e frontend. Neste caso, a aplicação é uma lista de tarefas que conta com tela de login,  tela de cadastro, tela com lista de atividades onde é possível ler, criar, alterar e deletar atividades relacionadas a um usuário  específico, notificando-o sempre que alguma alteração for realizada.
 
