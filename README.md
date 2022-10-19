@@ -1,5 +1,5 @@
 # ATIVYdades diárias
-Este é um desafio técnico realizado com o intuito de ocupar a vaga de desenvolvedor jr na Ativy.
+Este é um desafio técnico realizado para a Ativy com o intuito de ocupar a vaga de desenvolvedor fullstack jr.
 
 ## TABELA DE CONTEÚDOS
 <!--ts-->
@@ -39,7 +39,9 @@ Backend
 
 FrontEnd
 - React.js
+- ContextApi
 - styledComponents
+- Hooks
 
 ##
 ### FUNCIONALIDADES
@@ -86,10 +88,12 @@ No frontend iniciei definindo uma estrutura básica e criando algumas páginas e
 
 Comecei a desenvolver a tela de login e cadastro como um brainstorm, utilizando somente uma regra de negócio básica para fazer a aplicação funcionar de maneira local, para poder ir polindo e melhorando conforme a evolução da aplicação e das funcionalidades. Comecei a criar um design, para saber se atenderia a ideia que eu tinha inicialmente e para poder melhorar a aplicação pensando em usabilidade do usuário.
 
+Utilizei uma estratégia de dividir o desenvolvimento do frontend baseado em componentes e a lógica que  ele necessitaria, talvez não tenha sido a melhor estratégia a ser abordada, se tivesse começando o projeto agora, abordaria a seguinte estratégia, elaboraria todo o esqueleto da aplicação primeiro, e somente depois iria para a parte de estilização e melhoria de código, assim eu conseguiria escrever códigos melhores e em menor tempo.
 
+Confesso que a parte de desenvolvimento frontend foi a mais complexa, isso, devido ao tempo que fiquei utilizá-lo, principalmente React. Acredito que com este desafio, poderei treinar ainda mais o frontend e principalmente a refatoração de código.
 
 ##
-#### PRÓXIMOS PASSOS
+### PRÓXIMOS PASSOS
 Pretendo realizar os testes de toda a aplicação a fim de minimizar a possibilidade de erro e amplificar a manutenibilidade da aplicação, além disso, percebi também alguns pontos onde posso melhorar tanto a leitura como a qualidade de código, percebi que em alguns quesitos, principalmente do frontend, exitem outras possibilidades que tornariam o código muito mais limpo, pretendo fazer isso futuramente.
 
 ##
